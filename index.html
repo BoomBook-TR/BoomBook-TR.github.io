@@ -4,34 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Audio Editor Pro - Profesyonel Ses Düzenleyici</title>
+    <!-- Modern bir görünüm için Inter fontunu ekliyoruz -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0b0f19;
+            --primary-color: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0D101E;
-            color: #ffffff;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.1), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(56, 189, 248, 0.05), transparent 40%);
+            color: var(--text-main);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
+
         header {
-            padding: 20px 40px;
+            padding: 24px 50px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
         }
+
         .logo {
-            font-size: 20px;
-            font-weight: 700;
-            color: #38bdf8;
-            letter-spacing: 0.5px;
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
         main {
             flex: 1;
             display: flex;
@@ -39,110 +64,248 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 80px 20px;
         }
+
         .hero {
-            max-width: 700px;
+            max-width: 800px;
+            animation: fadeIn 1s ease-out;
         }
+
         h1 {
-            font-size: 42px;
-            margin-bottom: 20px;
+            font-size: 48px;
+            margin-bottom: 24px;
             font-weight: 800;
-            color: #f8fafc;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
+
         p.subtitle {
-            font-size: 18px;
-            color: #94a3b8;
-            margin-bottom: 30px;
+            font-size: 20px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 400;
+            padding: 0 20px;
         }
+
+        /* Mağaza Butonları */
+        .store-badges {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .store-btn {
+            display: flex;
+            align-items: center;
+            background-color: #1e293b;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            min-width: 180px;
+        }
+
+        .store-btn:hover {
+            background-color: #334155;
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .store-btn svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 12px;
+            fill: #ffffff;
+        }
+
+        .store-btn .btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .store-btn .small-text {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            line-height: 1;
+            margin-bottom: 3px;
+        }
+
+        .store-btn .big-text {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        /* Özellikler Kartları */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
             width: 100%;
-            max-width: 700px;
+            max-width: 900px;
             text-align: left;
         }
+
         .feature-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 20px;
-            border-radius: 12px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 30px 24px;
+            border-radius: 16px;
+            transition: transform 0.3s ease, background 0.3s ease;
+            backdrop-filter: blur(10px);
         }
-        .feature-card h3 {
-            font-size: 16px;
-            margin-bottom: 8px;
-            color: #38bdf8;
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary-color);
         }
-        .feature-card p {
-            font-size: 13px;
-            color: #94a3b8;
-        }
-        .btn-store {
-            display: inline-flex;
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 10px;
+            display: flex;
             align-items: center;
-            background-color: #ffffff;
-            color: #0d101e;
-            padding: 14px 28px;
-            border-radius: 8px;
-            text-decoration: none;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .feature-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--primary-color);
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--text-main);
             font-weight: 600;
-            font-size: 16px;
-            transition: background-color 0.2s, transform 0.2s;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
         }
-        .btn-store:hover {
-            background-color: #f1f5f9;
-            transform: translateY(-2px);
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
         }
+
         footer {
             text-align: center;
-            padding: 20px;
-            font-size: 13px;
+            padding: 30px 20px;
+            font-size: 14px;
             color: #64748b;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
+
         footer a {
-            color: #38bdf8;
+            color: var(--primary-color);
             text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: #7dd3fc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            p.subtitle { font-size: 16px; }
+            .store-badges { flex-direction: column; align-items: center; }
+            .store-btn { width: 100%; max-width: 250px; justify-content: center; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">Audio Editor Pro</div>
+        <div class="logo">Audio Editor <span>Pro</span></div>
     </header>
 
     <main>
         <div class="hero">
             <h1>Profesyonel Ses Düzenleme Artık Cebinizde</h1>
-            <p class="subtitle">Ses dosyalarınızı saniyeler içinde kesin, birleştirin, format dönüştürün ve profesyonel efektler uygulayın.</p>
+            <p class="subtitle">Ses dosyalarınızı saniyeler içinde kesin, birleştirin ve farklı formatlara dönüştürün. Üstelik karmaşık menüler olmadan, tamamen kullanıcı dostu bir arayüzle.</p>
+            
+            <div class="store-badges">
+                <!-- Apple App Store (Placeholder) -->
+                <a href="#" class="store-btn">
+                    <svg viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                    <div class="btn-text">
+                        <span class="small-text">App Store'dan</span>
+                        <span class="big-text">İndirin</span>
+                    </div>
+                </a>
+
+                <!-- Google Play Store (Gerçek Link) -->
+                <a href="https://play.google.com/store/apps/details?id=com.isaak.audioeditorpro" class="store-btn" target="_blank">
+                    <svg viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+                    <div class="btn-text">
+                        <span class="small-text">Google Play'den</span>
+                        <span class="big-text">Alın</span>
+                    </div>
+                </a>
+
+                <!-- Huawei AppGallery (Placeholder) -->
+                <a href="#" class="store-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <div class="btn-text">
+                        <span class="small-text">AppGallery ile</span>
+                        <span class="big-text">Keşfedin</span>
+                    </div>
+                </a>
+            </div>
             
             <div class="features">
                 <div class="feature-card">
-                    <h3>Hızlı Kesim & Birleştirme</h3>
-                    <p>Ses dosyalarınızı kayıp yaşamadan dilediğiniz gibi düzenleyin.</p>
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9-2 2-2h14v-4"/><path d="M18 22l-4-4 4-4"/></svg>
+                    </div>
+                    <h3>Hassas Ses Kesme</h3>
+                    <p>İstenmeyen bölümleri kolayca çıkarın. Ses dosyalarınızı milisaniyelik hassasiyetle tam istediğiniz noktadan kırpın.</p>
                 </div>
                 <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3 6h.01"/><path d="M3 12h.01"/><path d="M3 18h.01"/></svg>
+                    </div>
+                    <h3>Çoklu Ses Birleştirme</h3>
+                    <p>Farklı ses dosyalarını tek bir parça halinde, kalite kaybı yaşamadan ve pürüzsüz geçişlerle birleştirin.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="7.5 4.21 12 6.81 16.5 4.21"/><polyline points="7.5 19.79 7.5 14.6 3 12"/><polyline points="21 12 16.5 14.6 16.5 19.79"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
                     <h3>Format Dönüştürücü</h3>
-                    <p>Popüler tüm ses formatları arasında anında dönüşüm yapın.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>Gelişmiş Efektler</h3>
-                    <p>Eko, ses yükseltme, ekolayzır ve çok daha fazlası.</p>
+                    <p>MP3, WAV, M4A, AAC ve diğer popüler ses formatları arasında cihazınızı yormadan hızlıca dönüşüm yapın.</p>
                 </div>
             </div>
-
-            <a href="https://play.google.com/store/apps/details?id=com.isaak.audioeditorpro" class="btn-store" target="_blank">
-                Google Play'den İndir
-            </a>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Audio Editor Pro. Tüm hakları saklıdır. | Destek: <a href="mailto:smart7400@gmail.com">smart7400@gmail.com</a></p>
+        <p>&copy; 2026 Audio Editor Pro. Tüm hakları saklıdır. | İletişim & Destek: <a href="mailto:smart7400@gmail.com">smart7400@gmail.com</a></p>
     </footer>
 
 </body>
