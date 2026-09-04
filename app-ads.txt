@@ -1,3 +1,4 @@
+google.com, pub-1562338997057693, DIRECT, f08c47fec0942fa0
 google.com, pub-6034949074972893, DIRECT, f08c47fec0942fa0
 acd.op.hicloud.com,2012010977331289216,DIRECT
 adx-dre.op.hicloud.com,2012010977331289216,DIRECT
